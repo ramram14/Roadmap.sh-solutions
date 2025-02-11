@@ -40,6 +40,7 @@ Some examples of what you might need for some projects are :
 * [Backend](./backend/README.md)
   * Node JS
     * [Task Tracker CLI](./backend/Node-JS/Task-Tracker-CLI) solution for <https://roadmap.sh/projects/task-tracker>
+    * [Github-User-Activity](./backend/Node-JS/Github-User-Activity) solution for <https://roadmap.sh/projects/github-user-activity>
 
 ## ✨ Notes
 
