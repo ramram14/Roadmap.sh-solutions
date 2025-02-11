@@ -1,4 +1,4 @@
-import runTaskManager from "./allFunction.js";
+import runTaskManager  from "./allFunction.js";
 
 const input = process.argv.slice(2);
 runTaskManager(input);

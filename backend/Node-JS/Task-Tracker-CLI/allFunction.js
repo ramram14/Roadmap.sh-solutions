@@ -1,5 +1,5 @@
 /**
- * @module TaskTrackerCLI
+ * @file TaskTrackerCLI
  * Main module for the Task Tracker CLI.
  *
  * @description
@@ -39,7 +39,7 @@
 
 
 
-import fs from 'fs';
+import fs from "fs";
 
 
 // file database route
