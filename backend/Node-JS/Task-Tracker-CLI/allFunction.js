@@ -53,7 +53,8 @@ const FILE_DATABASE_ROUTE = "./tasks.json";
 
 export default function runTaskManager(input) {
 
-
+try {
+    
 
     // Action of what user want to do
     const action = input[0].toLowerCase();
@@ -78,25 +79,31 @@ export default function runTaskManager(input) {
     // All if statement for action
     switch (action) {
         case "add":
-            return addTask(tasks, taskIdentifier);
+            addTask(tasks, taskIdentifier);
+            break;
 
         case "update":
-            return updateTask(tasks, taskId, updateData);
+            updateTask(tasks, taskId, updateData);
+            break;
 
         case "delete":
-            return deleteTask(tasks, taskId);
-
+            deleteTask(tasks, taskId);
+            break;
         case "mark-in-progress":
-            return updateTaskStatus(tasks, taskId, "in-progress");
+            updateTaskStatus(tasks, taskId, "in-progress");
+            break;
 
         case "mark-done":
-            return updateTaskStatus(tasks, taskId, "done");
+            updateTaskStatus(tasks, taskId, "done");
+            break;
 
         case "list":
             if (taskIdentifier) {
-                return getTaskByStatus(tasks, taskIdentifier);
+                getTaskByStatus(tasks, taskIdentifier);
+                break;
             } else {
-                return console.log(tasks);
+                console.log(tasks);
+                break;
             }
         case "help":
             const helpMessage = `
@@ -136,7 +143,19 @@ Examples:
         default:
             console.log("Invalid command. Use './task-cli help' to see available commands.");
     }
+    
+} catch (error) {
 
+    // Show error message to cli
+    // every function that has checks to go through will throw error if check goes failed
+    console.log(error.message)
+
+
+    /**
+    * For Debuggin purpose
+    * console.error(error)
+    */
+}
 }
 
 // Get all tasks
@@ -157,9 +176,8 @@ function getAllTasks() {
 
 // Get task by status
 function getTaskByStatus(tasks, status) {
-    if (!isValidStatus(status)) {
-        return console.log("Invalid status, please use todo, in-progress, or done");
-    }
+    if (!isValidStatus(status)) throw new Error("Invalid status, please use todo, in-progress, or done")
+        
     console.log("Tasks by status:", status);
     const filteredTasks = tasks.filter((task) => task.status === status);
     console.log(filteredTasks);
@@ -177,9 +195,7 @@ function saveTask(tasks) {
 
 // Add new task
 function addTask(tasks, taskDescription) {
-    if (!taskDescription) {
-        return console.log("Please provide a task description");
-    }
+    if (!taskDescription) throw new Error("Please provide a task description")
 
     // Generate new id auto increment
     const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
@@ -200,9 +216,7 @@ function addTask(tasks, taskDescription) {
 
 // Update task
 function updateTask(tasks, id, taskIdentifier) {
-    if (!id || !taskIdentifier) {
-        return console.log("Please provide both task ID and updated task description")
-    }
+    if (!id || !taskIdentifier) throw new Error("Please provide both task ID and updated task description")
 
     const index = tasks.findIndex((task) => task.id === id);
 
@@ -219,15 +233,11 @@ function updateTask(tasks, id, taskIdentifier) {
 
 // Delete task
 function deleteTask(tasks, id) {
-    if (!id || isNaN(id)) {
-        return console.log("Please provide a task ID")
-    }
+    if (!id || isNaN(id)) throw new Error("Please provide a task ID")
 
     const index = tasks.findIndex((task) => task.id === id);
 
-    if (index === -1) {
-        return console.log("Task ID not found")
-    }
+    if (index === -1) throw new Error("Task ID not found")
 
     tasks.splice(index, 1);
     saveTask(tasks);
@@ -236,14 +246,10 @@ function deleteTask(tasks, id) {
 
 // Update task status
 function updateTaskStatus(tasks, id, newStatus) {
-    if (!isValidStatus(newStatus)) {
-        return console.log("Invalid status, please use todo, in-progress, or done")
-    }
+    if (!isValidStatus(newStatus)) throw new Error("Invalid status, please use todo, in-progress, or done")
     const index = tasks.findIndex((task) => task.id === id);
 
-    if (index === -1) {
-        return console.log("Task ID not found")
-    }
+    if (index === -1) throw new Error("Task ID not found")
 
     tasks[index].status = newStatus;
     tasks[index].updatedAt = getTime();
