@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Detail</title>
+    <style>
+        body {
+            font-family: sans-serif, Helvetica;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        .btn-back {
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid black;
+            font-size: 1rem;
+        }
+        .btn-container {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-container button {
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid black;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="window.location.href='/home'" class="btn-back">Back</button>
+    <h1>Blog Detail</h1>
+
+    <div class="btn-container">
+        <button onclick="window.location.href='/edit/<%= blog.slug %>'">Edit</button>
+    <form action="/delete/<%= blog.slug %>?_method=DELETE" method="post">
+        <button type="submit">Delete</button>
+    </form>
+    </div>
+
+    <h2>
+        <%= blog.title %>
+    </h2>
+    <div>
+        <span style="font-size: 0.7rem">Created At : <%= blog.createdAt %></span>
+        <!-- <span style="font-size: 0.7rem">Updated At : <%= blog.updatedAt %></span> -->
+    </div>
+    <p>
+        <%= blog.content %>
+    </p>
+</body>
+
+</html>

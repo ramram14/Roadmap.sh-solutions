@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs</title>
+    <style>
+        body {
+            font-family: sans-serif, Helvetica;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .card {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+
+            &:hover {
+                background-color: lightgray;
+            }
+        }
+        .date {
+            font-size: 0.7rem;
+            color: gray;
+        }
+        .btn-create-blog {
+            background-color: lightblue;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid black;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All Blogs</h1>
+    <button onclick="window.location.href='/new'" class="btn-create-blog">Create new blog</button>
+    <main style="display: flex; flex-direction: column; gap: 10px;">
+        <section>
+            <% for (let blog of blogs) { %>
+                <a href="/article/<%= blog.slug %>" class="card">
+                    <p>
+                        <%= blog.title %>
+                    </p>
+                    <span class="date">Created At : <%= blog.createdAt %></span>
+                </a>
+                <% } %>
+        </section>
+    </main>
+</body>
+
+</html>

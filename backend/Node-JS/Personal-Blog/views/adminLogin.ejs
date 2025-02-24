@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            font-family: sans-serif, Helvetica;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        input {
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .btn-login {
+            background-color: lightblue;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid black;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Login</h1>
+    <form action="/login" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <button type="submit" class="btn-login">Login</button>
+    </form>
+</body>
+</html>
