@@ -19,12 +19,6 @@ const mongoose = require('mongoose');
 const createBlog = async (req, res) => {
     try {
         const { title, content, category, tags } = req.body;
-        console.log(
-            'title', title,
-            'content', content,
-            'category', category,
-            'tags', tags
-        )
 
         // Validate the input
         if (!title || !content || !category || !tags) {
@@ -196,6 +190,15 @@ const updateBlog = async (req, res) => {
 
         // Validate the input
         const { title, content, category, tags } = req.body;
+
+         // Validate the input
+         if (!title || !content || !category || !tags) {
+            return res.status(400)
+                .json({
+                    success: false,
+                    message: "All fields are required: title, content, category, tags",
+                });
+        }
 
         const updatedBlog = await Blog.findByIdAndUpdate(
             id,
