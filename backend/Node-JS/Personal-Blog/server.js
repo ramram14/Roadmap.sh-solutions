@@ -80,26 +80,6 @@ app.get('/article/:slug', (req, res) => {
     }
 });
 
-
-/**
- * Admin Routes
- * 
- * GET Routes:
- * - /login: Render the login page for admin authentication.
- * - /new: Render the page for creating a new blog post.
- * - /edit/:slug: Render the page for editing a blog post identified by its slug.
- * 
- * POST Routes:
- * - /login: Handle the login form submission for admin authentication.
- * - /new: Handle the form submission for creating a new blog post.
- * 
- * PUT Routes:
- * - /edit/:slug: Handle updating a blog post identified by its slug.
- * 
- * DELETE Routes:
- * - /delete/:slug: Handle the deletion of a blog post identified by its slug.
- */
-
 // Render the login page for admin authentication.
 app.get('/login', (req, res) => {
     res.render('adminLogin');
@@ -120,6 +100,26 @@ app.post('/login', (req, res) => {
         res.send('Invalid username or password');
     }
 });
+
+
+
+/**
+ * Admin Routes
+ * 
+ * GET Routes:
+ * - /new: Render the page for creating a new blog post.
+ * - /edit/:slug: Render the page for editing a blog post identified by its slug.
+ * 
+ * POST Routes:
+ * - /new: Handle the form submission for creating a new blog post.
+ * 
+ * PUT Routes:
+ * - /edit/:slug: Handle updating a blog post identified by its slug.
+ * 
+ * DELETE Routes:
+ * - /delete/:slug: Handle the deletion of a blog post identified by its slug.
+ */
+
 
 // Render the page for creating a new blog post.
 app.get('/new', checkAuth, (req, res) => {
