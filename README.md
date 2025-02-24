@@ -37,10 +37,11 @@ Some examples of what you might need for some projects are :
 
 ## 📂 Available Projects
 
-* [Backend](./backend/README.md)
+* **Backend**
   * Node JS
     * [Task Tracker CLI](./backend/Node-JS/Task-Tracker-CLI) solution for <https://roadmap.sh/projects/task-tracker>
     * [Github-User-Activity](./backend/Node-JS/Github-User-Activity) solution for <https://roadmap.sh/projects/github-user-activity>
+    * [Personal Blog](./backend/Node-JS/Personal-Blog) solution for <https://roadmap.sh/projects/personal-blog>
 
 ## ✨ Notes
 
