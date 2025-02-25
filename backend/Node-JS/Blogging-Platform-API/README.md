@@ -38,6 +38,7 @@ For more information about the project, you can check the detail on [Blogging Pl
    npm start
 
    // or using nodemon for development
+   
    npm run dev
    ```
 
